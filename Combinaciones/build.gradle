@@ -1,0 +1,67 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven{
+     //   	url("https://maven.oracle.com")
+        	//url("https://oss.sonatype.org/content/repositories/snapshots")
+        	url("https://repo.spring.io/libs-release")
+        //	url("https://plugins.gradle.org/m2/")
+        	url("http://maven.apache.org")	
+      //  	url("https://repo1.maven.org/maven2/")
+        	
+        }
+    }
+    dependencies {
+    
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+      //  classpath("net.saliman:gradle-cobertura-plugin:2.3.1")
+    // classpath("io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'b'
+    version  = '0.1.0'
+}
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+dependencies {
+	compile group: 'com.sun.jersey', name: 'jersey-client', version: '1.19'
+	//compile("com.github.fge:json-schema-validator:2.2.6")
+	//compile("com.github.fge:jackson-coreutils:1.8")
+	//compile("com.github.fge:json-schema-core:1.2.5")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")    
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    //compile ("org.freemarker:freemarker:2.3.9")
+    compile ("org.apache.httpcomponents:httpclient:4.5")
+    
+    testCompile("junit:junit")
+
+	compile("org.springframework.boot:spring-boot-starter-test") 
+	//compile( group: "com.fasterxml.jackson.module", name: "jackson-module-jsonSchema", version: "2.5.1")
+ 	
+  //compile("org.codehaus.jackson:jackson-mapper-asl:1.9.13")
+  //compile("org.apache.xmlgraphics:fop:2.1")
+  //compile("jdom:jdom:1.0")
+ //    	compile("org.postgresql:postgresql:9.4-1200-jdbc41")   	
+}
+//task wrapper(type: Wrapper) {
+  //  gradleVersion = '2.2.1'
+//}
+configurations{
+compile.exclude group:'ch.qos.logback'
+
+}
